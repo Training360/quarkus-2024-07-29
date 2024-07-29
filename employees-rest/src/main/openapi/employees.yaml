@@ -12,6 +12,8 @@ paths:
       summary: List employees
       description: List employees
       operationId: listEmployees
+      tags:
+        - employees
       responses:
         200:
           description: OK
