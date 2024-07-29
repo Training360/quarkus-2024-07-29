@@ -21,6 +21,7 @@ paths:
                 type: array
                 items:
                   type: object
+                  title: Employee
                   properties:
                     id:
                       type: integer
