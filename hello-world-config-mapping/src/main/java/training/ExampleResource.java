@@ -4,20 +4,19 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @Path("/hello")
 public class ExampleResource {
 
-    private String welcomeMessage;
+    private ExampleConfig exampleConfig;
 
-    public ExampleResource(@ConfigProperty(name = "example.message") String welcomeMessage) {
-        this.welcomeMessage = welcomeMessage;
+    public ExampleResource(ExampleConfig exampleConfig) {
+        this.exampleConfig = exampleConfig;
     }
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return welcomeMessage;
+        return exampleConfig.message();
     }
 }
