@@ -10,3 +10,19 @@ GET http://localhost:8080/api/employees/2
 
 ### Find employee by id - not found
 GET http://localhost:8080/api/employees/666
+
+### Create
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Create with demo
+POST http://localhost:8080/demo/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}

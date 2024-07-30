@@ -39,6 +39,22 @@ paths:
                     name: John Doe
                   - id: 2
                     name: Jack Doe
+    post:
+      operationId: createEmployee
+      tags:
+        - employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Employee"
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
   /api/employees/{id}:
     get:
       operationId: findEmployeeById
@@ -58,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Employee"
+        404:
+          description: Not found
 
 components:
   schemas:
