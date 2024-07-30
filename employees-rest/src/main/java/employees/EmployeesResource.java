@@ -37,6 +37,9 @@ public class EmployeesResource implements EmployeesApi {
 
     @Override
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
-        return null;
+        if (!id.equals(employeeDto.getId())) {
+            throw new IllegalArgumentException("Employee id (%d) must be equal to id (%d)".formatted(id, employeeDto.getId()));
+        }
+        return employeesService.updateEmployee(employeeDto);
     }
 }

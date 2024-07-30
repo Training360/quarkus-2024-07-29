@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Supplier;
 
 @ApplicationScoped
 public class EmployeesService {
@@ -42,12 +43,30 @@ public class EmployeesService {
                 .filter(employeeDto -> employeeDto.getId().equals(id))
                 .findAny()
                 .map(EmployeesService::toDto)
-                .orElseThrow(() -> new NotFoundException("Employee with id %d not found".formatted(id)));
+                .orElseThrow(notFound(id));
+    }
+
+    public Supplier<NotFoundException> notFound(long id) {
+        return () -> new NotFoundException("Employee with id %d not found".formatted(id));
     }
 
     public EmployeeDto create(EmployeeDto employee) {
         var entity = new Employee(sequence.incrementAndGet(), employee.getName());
         employees.add(entity);
         return toDto(entity);
+    }
+
+    public EmployeeDto updateEmployee(EmployeeDto employeeDto) {
+        return employees
+                .stream()
+                .filter(employee -> employee.getId().equals(employeeDto.getId()))
+                .peek(employee -> employee.setName(employeeDto.getName()))
+                    // funkcionális programozás
+                    // alapeleme: függvény
+                    // nem lehet: MELLÉKHATÁS
+                .map(EmployeesService::toDto)
+                .findAny()
+                .orElseThrow(notFound(employeeDto.getId()));
+
     }
 }
