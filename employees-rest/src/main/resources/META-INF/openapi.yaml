@@ -76,7 +76,29 @@ paths:
                 $ref: "#/components/schemas/Employee"
         404:
           description: Not found
-
+    put:
+      operationId: updateEmployee
+      tags:
+        - employees
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Employee"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
 components:
   schemas:
     Employee:

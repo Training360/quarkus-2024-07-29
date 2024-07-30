@@ -35,4 +35,8 @@ public class EmployeesResource implements EmployeesApi {
         return employeesService.create(employeeDto);
     }
 
+    @Override
+    public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
+        return null;
+    }
 }
