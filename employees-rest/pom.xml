@@ -154,6 +154,10 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <auth>false</auth>
 
+                            <templateDirectory>
+                                ${project.basedir}/src/main/openapi/templates
+                            </templateDirectory>
+
                         </configuration>
                     </execution>
                 </executions>

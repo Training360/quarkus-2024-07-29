@@ -46,3 +46,11 @@ Content-Type: application/json
 
 ### Delete employee
 DELETE http://localhost:8080/api/employees/1
+
+### Create book
+POST http://localhost:8080/demo/books
+Content-Type: application/json
+
+{
+  "title": "grrrrr"
+}
