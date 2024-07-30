@@ -50,4 +50,10 @@ public class EmployeesResource implements EmployeesApi {
         }
         return Response.ok(employeesService.updateEmployee(employeeDto)).build();
     }
+
+    @Override
+    public Response deleteEmployee(Long id) {
+        employeesService.deleteEmployee(id);
+        return Response.noContent().build();
+    }
 }

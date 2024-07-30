@@ -69,4 +69,12 @@ public class EmployeesService {
                 .orElseThrow(notFound(employeeDto.getId()));
 
     }
+
+    public void deleteEmployee(Long id) {
+        boolean deleted = employees.removeIf(employee -> employee.getId().equals(id));
+// Idempotens
+        //        if (!deleted) {
+//            throw new NotFoundException("Employee with id %d not found".formatted(id));
+//        }
+    }
 }

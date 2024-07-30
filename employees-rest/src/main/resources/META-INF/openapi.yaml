@@ -99,6 +99,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Employee"
+    delete:
+      operationId: deleteEmployee
+      tags:
+        - employees
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: OK
 components:
   schemas:
     Employee:

@@ -35,3 +35,6 @@ Content-Type: application/json
   "id": 1,
   "name": "John Doe"
 }
+
+### Delete employee
+DELETE http://localhost:8080/api/employees/1
