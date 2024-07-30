@@ -128,3 +128,4 @@ components:
         name:
           type: string
           description: The name of the employee
+          x-constraints: "@UppercaseFirstCharacter"
