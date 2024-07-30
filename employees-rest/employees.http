@@ -4,3 +4,9 @@ GET http://localhost:8080/api/employees
 ### List employees with parameters
 GET http://localhost:8080/api/employees?name-prefix=John
 RequestId: {{$random.uuid}}
+
+### Find employee by id
+GET http://localhost:8080/api/employees/2
+
+### Find employee by id - not found
+GET http://localhost:8080/api/employees/666

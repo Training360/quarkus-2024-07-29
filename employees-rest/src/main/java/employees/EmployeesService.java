@@ -27,4 +27,12 @@ public class EmployeesService {
                 .toList()
                 ;
     }
+
+    public EmployeeDto findEmployeeById(Long id) {
+        return employees
+                .stream()
+                .filter(employeeDto -> employeeDto.getId().equals(id))
+                .findAny()
+                .orElseThrow(() -> new NotFoundException("Employee with id %d not found".formatted(id)));
+    }
 }
