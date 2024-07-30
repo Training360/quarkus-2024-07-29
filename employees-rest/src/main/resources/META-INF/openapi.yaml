@@ -14,6 +14,17 @@ paths:
       operationId: listEmployees
       tags:
         - employees
+      parameters:
+        - name: name-prefix
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: RequestId
+          in: header
+          required: false
+          schema:
+            type: string
       responses:
         200:
           description: OK
