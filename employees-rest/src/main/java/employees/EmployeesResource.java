@@ -16,6 +16,11 @@ public class EmployeesResource implements EmployeesApi {
     }
 
     @Override
+    public EmployeeDto findEmployeeById(Long id) {
+        return null;
+    }
+
+    @Override
     public List<EmployeeDto> listEmployees(String namePrefix, String requestId) {
         Log.infof("Parameters: %s, %s", namePrefix, requestId);
         return employeesService.getEmployees(Optional.ofNullable(namePrefix));

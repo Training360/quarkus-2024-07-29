@@ -33,18 +33,42 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  title: Employee
-                  properties:
-                    id:
-                      type: integer
-                      format: int64
-                      description: The id of the employee
-                    name:
-                      type: string
-                      description: The name of the employee
+                  $ref: "#/components/schemas/Employee"
                 example:
                   - id: 1
                     name: John Doe
                   - id: 2
                     name: Jack Doe
+  /api/employees/{id}:
+    get:
+      operationId: findEmployeeById
+      tags:
+        - employees
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+
+components:
+  schemas:
+    Employee:
+      type: object
+      title: Employee
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The id of the employee
+        name:
+          type: string
+          description: The name of the employee
