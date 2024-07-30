@@ -138,6 +138,7 @@
                                 <interfaceOnly>true</interfaceOnly>
                                 <useTags>true</useTags>
                                 <useJakartaEe>true</useJakartaEe>
+                                <returnResponse>true</returnResponse>
                             </configOptions>
                             <apiPackage>training.api</apiPackage>
                             <modelPackage>training.dto</modelPackage>

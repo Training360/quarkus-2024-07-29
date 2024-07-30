@@ -4,6 +4,7 @@ import io.quarkus.logging.Log;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriBuilder;
 import training.api.EmployeesApi;
 import training.dto.EmployeeDto;
 
@@ -15,31 +16,38 @@ public class EmployeesResource implements EmployeesApi {
 
     private EmployeesService employeesService;
 
-    public EmployeesResource(EmployeesService employeesService) {
+    private UriBuilder uriBuilder;
+
+    public EmployeesResource(EmployeesService employeesService, UriBuilder uriBuilder) {
         this.employeesService = employeesService;
+        this.uriBuilder = uriBuilder;
     }
 
     @Override
-    public EmployeeDto findEmployeeById(Long id) {
-        return employeesService.findEmployeeById(id);
+    public Response findEmployeeById(Long id) {
+        return Response.ok(employeesService.findEmployeeById(id)).build();
     }
 
     @Override
-    public List<EmployeeDto> listEmployees(String namePrefix, String requestId) {
+    public Response listEmployees(String namePrefix, String requestId) {
         Log.infof("Parameters: %s, %s", namePrefix, requestId);
-        return employeesService.getEmployees(Optional.ofNullable(namePrefix));
+        return Response.ok(employeesService.getEmployees(Optional.ofNullable(namePrefix))).build();
     }
 
     @Override
-    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-        return employeesService.create(employeeDto);
+    public Response createEmployee(EmployeeDto employeeDto) {
+        var employee = employeesService.create(employeeDto);
+        return Response
+                .created(uriBuilder.path("/api/employees/{employeeId}").build(employee.getId()))
+                .entity(employee)
+                .build();
     }
 
     @Override
-    public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
+    public Response updateEmployee(Long id, EmployeeDto employeeDto) {
         if (!id.equals(employeeDto.getId())) {
             throw new IllegalArgumentException("Employee id (%d) must be equal to id (%d)".formatted(id, employeeDto.getId()));
         }
-        return employeesService.updateEmployee(employeeDto);
+        return Response.ok(employeesService.updateEmployee(employeeDto)).build();
     }
 }
