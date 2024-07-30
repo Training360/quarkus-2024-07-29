@@ -29,7 +29,7 @@ paths:
                       type: integer
                       format: int64
                       description: The id of the employee
-                    name:
+                    firstname:
                       type: string
                       description: The name of the employee
                 example:
