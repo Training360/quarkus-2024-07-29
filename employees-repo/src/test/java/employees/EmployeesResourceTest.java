@@ -1,6 +1,7 @@
 package employees;
 
 import io.quarkus.logging.Log;
+import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
@@ -16,12 +17,17 @@ import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @QuarkusTest
 class EmployeesResourceTest {
 
     @Inject
     EmployeesRepository employeesRepository;
+
+    @InjectMock
+    EmployeesService employeesService;
 
 //    @BeforeEach
 //    @Transactional
@@ -48,7 +54,9 @@ class EmployeesResourceTest {
         var name = "John Doe " + UUID.randomUUID();
         Log.infof("Name: %s", name);
 
-        createTestEmployee(name);
+//        createTestEmployee(name);
+
+        when(employeesService.getEmployees(any())).thenReturn(List.of(new EmployeeDto().name(name)));
 
 //        given()
 //                .contentType(ContentType.JSON)
