@@ -54,3 +54,7 @@ Content-Type: application/json
 {
   "title": "grrrrr"
 }
+
+### Hello
+GET http://localhost:8080/api/hello
+Content-Type: */*
