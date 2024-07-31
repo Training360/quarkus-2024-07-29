@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-employee
+      author: trainer
+      changes:
+        - sqlFile:
+            path: 01-create-employee.sql
+            relativeToChangelogFile: true

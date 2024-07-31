@@ -1,0 +1,60 @@
+### List employees
+GET http://localhost:8080/api/employees
+
+### List employees with parameters
+GET http://localhost:8080/api/employees?name-prefix=John
+RequestId: {{$random.uuid}}
+
+### Find employee by id
+GET http://localhost:8080/api/employees/2
+
+### Find employee by id - not found
+GET http://localhost:8080/api/employees/666
+
+### Create
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Create with validation error
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "name": "john doe"
+}
+
+### Create with demo
+POST http://localhost:8080/demo/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Update employee
+PUT http://localhost:8080/api/employees/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John Doe"
+}
+
+### Delete employee
+DELETE http://localhost:8080/api/employees/1
+
+### Create book
+POST http://localhost:8080/demo/books
+Content-Type: application/json
+
+{
+  "title": "grrrrr"
+}
+
+### Hello
+GET http://localhost:8080/api/hello
+Content-Type: */*
