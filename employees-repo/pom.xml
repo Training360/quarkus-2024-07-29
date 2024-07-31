@@ -173,6 +173,8 @@
                                 <useTags>true</useTags>
                                 <useJakartaEe>true</useJakartaEe>
                                 <returnResponse>true</returnResponse>
+                                <generateConstructorWithAllArgs>true</generateConstructorWithAllArgs>
+
                             </configOptions>
                             <apiPackage>training.api</apiPackage>
                             <modelPackage>training.dto</modelPackage>
@@ -191,6 +193,8 @@
                             <templateDirectory>
                                 ${project.basedir}/src/main/openapi/templates
                             </templateDirectory>
+
+
 
                         </configuration>
                     </execution>
