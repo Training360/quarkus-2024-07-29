@@ -166,6 +166,8 @@
                             <inputSpec>${project.basedir}/src/main/resources/META-INF/openapi.yaml</inputSpec>
                             <generatorName>jaxrs-spec</generatorName>
                             <configOptions>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                                <library>quarkus</library>
                                 <dateLibrary>java8</dateLibrary>
                                 <useSwaggerAnnotations>false</useSwaggerAnnotations>
                                 <!--ensure we only generate java interfaces and no implementation skeleton-->
