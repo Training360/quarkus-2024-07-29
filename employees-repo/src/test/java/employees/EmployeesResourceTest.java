@@ -37,6 +37,8 @@ class EmployeesResourceTest {
 
     @Test
     void createEmployee() {
+        when(employeesService.create(any())).thenReturn(new EmployeeDto().id(1L).name("Jack Doe"));
+
         var result = given()
                 .contentType(ContentType.JSON)
                 .body(new EmployeeDto().name("Jack Doe"))
